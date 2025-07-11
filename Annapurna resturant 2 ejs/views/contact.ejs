@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - DRDO Annapurna Restaurant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/contact.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="/images/DRDO-logo-removebg-preview.png" alt="DRDO Logo" class="logo" />
+        <div class="logo-text">Annapurna Restaurant</div>
+      </div>
+      <ul>
+        <li><a href="/index">Home</a></li>
+        <li><a href="/menu">Menu</a></li>
+        <li><a href="/booking">Bookings</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="announcement">
+    Special meal is also available — check the menu for daily updates!
+  </div>
+
+  <div class="contact-container">
+    <div class="contact-form">
+      <h2 class="section-title">Send Us Feedback</h2>
+      <form action="/contact" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject" required>
+            <option value="">Select a subject</option>
+            <option value="feedback">General Feedback</option>
+            <option value="complaint">Complaint</option>
+            <option value="suggestion">Suggestion</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Feedback</button>
+      </form>
+    </div>
+
+    <div class="contact-info">
+      <h2 class="section-title">Contact Details</h2>
+
+      <div class="info-item">
+        <div class="info-icon">📌</div>
+        <div class="info-content">
+          <h3>Address</h3>
+          <p>Integrated Test Range (ITR)<br> Defence R&D Organisation<br> Chandipur, Balasore-756025<br> Odisha, India</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div class="info-content">
+          <h3>Phone</h3>
+          <p>06782-272033<br>06782-272072</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <div class="info-content">
+          <h3>Email</h3>
+          <p>abc@drdo.in<br>feedback@annapurna.drdo.in</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">🕒</div>
+        <div class="info-content">
+          <h3>Opening Hours</h3>
+          <p>Monday - Friday: 8:00 AM - 10:30 PM</p>
+        </div>
+      </div>
+
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d406.9844274929284!2d87.01326394423101!3d21.44344287253949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1751286480052!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <footer>
+    <h2>Annapurna Restaurant</h2>
+    <p>Serving nutritious, hygienic, and delicious meals to our DRDO community</p>
+    <p>&copy; 2023 DRDO Annapurna Restaurant. All rights reserved.</p>
+  </footer>
+</body>
+</html>

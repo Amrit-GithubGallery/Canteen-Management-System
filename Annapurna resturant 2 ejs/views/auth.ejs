@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authentication - DRDO Annapurna Restaurant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/auth.css">
+
+</head>
+<body>
+  <div class="auth-container">
+    <img src="/images/DRDO-logo-removebg-preview.png" class="logo" alt="DRDO Logo">
+    <h1>DRDO Annapurna Restaurant</h1>
+
+    <% if (error) { %>
+      <p style="color:red; margin-bottom:10px;"><%= error %></p>
+    <% } %>
+
+    <div class="tabs">
+      <div class="tab active" onclick="showTab('login')">Login</div>
+      <div class="tab" onclick="showTab('signup')">Sign Up</div>
+    </div>
+
+    <form id="login-form" class="auth-form active" method="POST" action="/login">
+      <div class="input-group">
+        <label for="login-employee-id">Employee ID</label>
+        <input type="text" name="employeeId" required>
+      </div>
+      <div class="input-group">
+        <label for="login-password">Password</label>
+        <input type="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <form id="signup-form" class="auth-form" method="POST" action="/signup">
+      <div class="input-group">
+        <label for="signup-name">Full Name</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="input-group">
+        <label for="signup-employee-id">Employee ID</label>
+        <input type="text" name="employeeId" required>
+      </div>
+      <div class="input-group">
+        <label for="signup-password">Password</label>
+        <input type="password" name="password" required>
+      </div>
+      <div class="input-group">
+        <label for="employee-type">Employee Type</label>
+        <select name="employeeType" required>
+          <option value="">Select Type</option>
+          <option value="staff">Staff</option>
+          <option value="intern">Intern</option>
+        </select>
+      </div>
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+
+  <script src="/js/auth.js"></script>
+</body>
+</html>

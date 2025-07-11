@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu - DRDO Annapurna Restaurant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/menu.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="/images/DRDO-logo-removebg-preview.png" alt="DRDO Logo" class="logo"/>
+        <div class="logo-text">Annapurna Restaurant</div>
+      </div>
+      <ul>
+        <li><a href="/index">Home</a></li>
+        <li><a href="/menu">Menu</a></li>
+        <li><a href="/booking">Bookings</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="announcement">
+    <span>Egg omelet served instantly daily</span>
+  </div>
+
+  <div class="background-wrapper">
+    <div class="menu-container">
+      <h1 class="menu-heading">Our Menu</h1>
+
+      <div class="menu-category">
+        <h2 class="category-title">Menu</h2>
+
+        <% const items = [
+          {name: 'Normal meal', price: 30},
+          {name: 'Special meal', price: 50},
+          {name: 'Monthly meal', price: 500},
+          {name: 'Special item', price: 25},
+          {name: 'Egg omelette', price: 10},
+          {name: 'Tea', price: 3},
+          {name: 'Egg Chop', price: 4}
+        ]; %>
+
+        <% items.forEach(item => { %>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name"><%= item.name %></div>
+              <div class="item-price">₹<%= item.price %></div>
+            </div>
+            <button class="add-btn" data-name="<%= item.name %>" data-price="<%= item.price %>">Add</button>
+          </div>
+        <% }); %>
+      </div>
+
+      <div class="cart-summary">
+        <h3>Your Order</h3>
+        <div id="cart-items">
+          <p class="empty-cart">No items added yet</p>
+        </div>
+        <div class="cart-total">
+          Total: ₹<span id="cart-total">0.00</span>
+        </div>
+        <button class="book-btn" id="book-now">Proceed to Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <footer>
+    <h2>📞 Contact Us</h2>
+    <p>Email: abc@drdo.in | Phone: +91-12345-67890</p>
+    <p><strong>About:</strong> Annapurna is a service initiative for quality food within the DRDO campus.</p>
+    <p><strong>Booking Time:</strong> 8:00 AM – 10:30 AM daily</p>
+  </footer>
+
+  <script>
+    const cart = [];
+    let total = 0;
+
+    document.querySelectorAll('.add-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const name = this.getAttribute('data-name');
+        const price = parseFloat(this.getAttribute('data-price'));
+        cart.push({ name, price });
+        total += price;
+        updateCart();
+      });
+    });
+
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p class="empty-cart">No items added yet</p>';
+      } else {
+        cartItems.innerHTML = '';
+        cart.forEach((item, index) => {
+          cartItems.innerHTML += `
+            <div class="cart-item">
+              <span style="color:#FF5733;">${item.name}</span>
+              <div class="cart-item-controls">
+                <span style="color:#FF5733;">₹${item.price.toFixed(2)}</span>
+                <button class="cancel-btn" data-index="${index}">×</button>
+              </div>
+            </div>
+          `;
+        });
+      }
+      cartTotal.textContent = total.toFixed(2);
+    }
+
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('cancel-btn')) {
+        const index = parseInt(e.target.getAttribute('data-index'));
+        total -= cart[index].price;
+        cart.splice(index, 1);
+        updateCart();
+      }
+    });
+
+    document.getElementById('book-now').addEventListener('click', function() {
+      if (cart.length === 0) {
+        return alert('Please add items before proceeding.');
+      }
+
+      fetch('/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: cart, total })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        window.location.href = '/booking';  // Redirect after saving
+      })
+      .catch(err => alert('Booking failed. Please try again.'));
+    });
+  </script>
+</body>
+</html>

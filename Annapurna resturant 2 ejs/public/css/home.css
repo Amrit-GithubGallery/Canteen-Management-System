@@ -1,0 +1,273 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+  color: #111;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+}
+
+header nav {
+  background-color: #007BFF;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 1rem;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-text {
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  font-family: 'Playfair Display', serif;
+}
+
+.logo {
+  height: 40px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.2rem 0;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.announcement {
+  width: 100%;
+  background-color: #f44336;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.3rem 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.announcement span {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 12s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.background-wrapper {
+  background: url('/images/backrest.jpg') no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.text-container {
+  max-width: 700px;
+  text-align: center;
+  z-index: 1;
+  padding: 0 0.5rem;
+  margin-right: 400px;
+}
+.highlight {
+  color: #ffe600;   /* Warm gold-yellow */
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  margin-top: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  font-family: 'Playfair Display', serif;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #f1f1f1;
+  margin: 0.5rem 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.sticker-message {
+      display: block;
+      margin: 2rem auto 0;
+      background-color: #00c853;
+      color: white;
+      font-weight: bold;
+      width: fit-content;
+      padding: 0.2rem 0.4rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, background-color 0.3s;
+      animation: pulse 2s infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sticker-message:hover {
+      transform: scale(1.05);
+      background-color: #00b44a;
+    }
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+hr {
+  margin: 1rem auto;
+  border: 0;
+  height: 1.5px;
+  background-color: #007BFF;
+  width: 80%;
+}
+
+footer {
+  text-align: center;
+  padding: 5rem 0.5rem;
+  background-color: lightyellow;
+  margin-top: 0;
+  width: 100%;
+}
+
+footer h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+footer p {
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  header nav {
+    flex-direction: column;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .logo-container {
+    margin-bottom: 0.5rem;
+  }
+
+  .logo {
+    height: 35px;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  nav ul {
+    gap: 0.8rem;
+    margin-left: 0;
+  }
+
+  nav ul li a {
+    font-size: 0.8rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .sticker-message {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .announcement {
+    font-size: 0.85rem;
+  }
+}
+
+
+.lottie-container {
+  width: 280px;
+  height: 280px;
+  margin-right: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.lottie-container:hover {
+  transform: scale(1.1) rotate(2deg);
+}
+
+@media (max-width: 768px) {
+  .lottie-container {
+    width: 200px;
+    height: 200px;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .text-container {
+    margin-right: 0;
+  }
+
+  main {
+    flex-direction: column;
+  }
+}
